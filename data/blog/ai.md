@@ -2,7 +2,7 @@
 title: "Future ai"
 author: "dayanch"
 createdAt: "2026-09-23T02:00:00.000Z"
-description: "Learn what Laravel's AppServiceProvider does and how to use its register and boot methods through a practical payment example."
+description: ""
 category: "Ai"
 ---
 
