@@ -1,5 +1,5 @@
 ---
-title: "Future ai"
+title: "The Future of AI"
 author: "dayanch"
 createdAt: "2026-09-23T02:00:00.000Z"
 description: ""
