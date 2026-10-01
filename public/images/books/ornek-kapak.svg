@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="560" viewBox="0 0 400 560">
-  <rect width="400" height="560" rx="12" fill="#e9dfcf"/>
-  <rect x="24" y="24" width="352" height="512" rx="4" fill="none" stroke="#9d7853"/>
-  <path d="M145 220h45q10 0 10 10q0-10 10-10h45v80h-45q-10 0-10 10q0-10-10-10h-45z" fill="none" stroke="#9d7853" stroke-width="3"/>
-  <text x="200" y="365" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#594735">ÖRNEK KAPAK</text>
-  <text x="200" y="400" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#594735">Kitap fotoğrafını buraya ekle</text>
-</svg>
