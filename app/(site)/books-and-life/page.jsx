@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { FiArrowUpRight, FiBookOpen } from 'react-icons/fi'
 import Image from 'next/image'
 import { getAllBooks } from '@/lib/books'
-import { getAllLifePosts } from '@/lib/life'
+// Life notes are temporarily disabled.
+// import { getAllLifePosts } from '@/lib/life'
 
 export const metadata = {
   title: 'Books & Life | dayanch.dev',
@@ -14,7 +15,7 @@ const statusLabels = { reading: 'Currently reading', finished: 'Read', planned: 
 
 export default function BooksAndLifePage() {
   const books = getAllBooks()
-  const lifePosts = getAllLifePosts()
+  // const lifePosts = getAllLifePosts()
 
   return (
     <main className="overflow-hidden px-4 pb-16 sm:px-6">
@@ -48,6 +49,7 @@ export default function BooksAndLifePage() {
           ) : <div className="rounded-2xl border border-dashed border-[var(--border)] px-6 py-12 text-center"><FiBookOpen aria-hidden="true" className="mx-auto mb-4 text-2xl text-[var(--accent)]" /><p className="font-medium">The bookshelf is waiting for its first book.</p><p className="mt-2 text-sm text-[var(--foreground-muted)]">Reading notes will find a home here.</p></div>}
         </section>
 
+        {/* Life notes are temporarily disabled.
         <section aria-labelledby="life-heading" className="border-t border-[var(--border)] py-8">
           <h2 id="life-heading" className="mb-6 text-2xl font-semibold tracking-tight">Life notes</h2>
           {lifePosts.length ? <div>{lifePosts.map(post => (
@@ -57,6 +59,7 @@ export default function BooksAndLifePage() {
             </Link>
           ))}</div> : <p className="text-sm leading-7 text-[var(--foreground-muted)]">More stories soon. A place for moments, discoveries, and things I learn along the way.</p>}
         </section>
+        */}
       </div>
     </main>
   )

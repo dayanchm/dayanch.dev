@@ -1,4 +1,7 @@
 import { notFound } from 'next/navigation'
+
+// Life notes are temporarily disabled.
+/*
 import ClientPost from '@/components/ClientPost'
 import { getAllLifePosts, getLifePostBySlug } from '@/lib/life'
 
@@ -22,4 +25,9 @@ export default async function LifePostPage({ params }) {
   const post = getLifePostBySlug(slug)
   if (!post) notFound()
   return <ClientPost post={post} backHref="/books-and-life" backLabel="Back to Books & Life" />
+}
+*/
+
+export default function LifePostPage() {
+  notFound()
 }

@@ -1,6 +1,6 @@
 import { getAllPosts } from '@/lib/blog'
 import { getAllBooks } from '@/lib/books'
-import { getAllLifePosts } from '@/lib/life'
+// import { getAllLifePosts } from '@/lib/life'
 
 export default async function sitemap() {
   const allPosts = getAllPosts()
@@ -54,10 +54,11 @@ export default async function sitemap() {
     url: `${baseUrl}/books-and-life/${book.slug}`,
     changeFrequency: 'monthly',
     priority: 0.5,
-  })), ...getAllLifePosts().map(post => ({
+  })), /* Life notes are temporarily disabled.
+  ...getAllLifePosts().map(post => ({
     url: `${baseUrl}/books-and-life/life/${post.slug}`,
     lastModified: new Date(post.createdAt),
     changeFrequency: 'monthly',
     priority: 0.5,
-  })), ...blogRoutes, ...journalRoutes]
+  })), */ ...blogRoutes, ...journalRoutes]
 }
