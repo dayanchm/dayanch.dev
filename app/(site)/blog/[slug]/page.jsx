@@ -5,7 +5,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params
   const post = getPostBySlug(slug)
   const url = `/blog/${slug}`
-  const image = post.image || '/og.png'
+  const image = post.image || '/og-portrait.png'
 
   return {
     title: post.title,
