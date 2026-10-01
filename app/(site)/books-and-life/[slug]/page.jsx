@@ -1,3 +1,4 @@
+import { createMetadata } from '@/lib/metadata'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -13,11 +14,12 @@ export async function generateMetadata({ params }) {
   const { slug } = await params
   const book = getBookBySlug(slug)
   if (!book) notFound()
-  return {
+  return createMetadata({
     title: `${book.title} | Books & Life | dayanch.dev`,
     description: book.description,
-    alternates: { canonical: `/books-and-life/${slug}` },
-  }
+    url: `/books-and-life/${slug}`,
+    type: 'article',
+  })
 }
 
 const markdownComponents = {

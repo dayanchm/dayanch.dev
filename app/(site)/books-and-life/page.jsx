@@ -1,3 +1,4 @@
+import { createMetadata } from '@/lib/metadata'
 import Link from 'next/link'
 import { FiArrowUpRight, FiBookOpen } from 'react-icons/fi'
 import Image from 'next/image'
@@ -5,11 +6,11 @@ import { getAllBooks } from '@/lib/books'
 // Life notes are temporarily disabled.
 // import { getAllLifePosts } from '@/lib/life'
 
-export const metadata = {
+export const metadata = createMetadata({
   title: 'Books & Life | dayanch.dev',
   description: 'My reading shelf, notes from books, and stories from everyday life.',
-  alternates: { canonical: '/books-and-life' },
-}
+  url: '/books-and-life',
+})
 
 const statusLabels = { reading: 'Currently reading', finished: 'Read', planned: 'Want to read' }
 

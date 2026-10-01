@@ -1,10 +1,12 @@
+import { createMetadata } from '@/lib/metadata'
 import { FiArrowUpRight, FiGitPullRequest, FiGithub } from 'react-icons/fi'
 import { getOpenSourceContributions } from '@/lib/github'
 
-export const metadata = {
+export const metadata = createMetadata({
   title: 'Open Source Contributions | dayanch.dev',
   description: 'Problems solved and pull requests contributed by Dayanch to open-source projects.',
-}
+  url: '/open-source',
+})
 
 const dateFormatter = new Intl.DateTimeFormat('en', {
   month: 'short',

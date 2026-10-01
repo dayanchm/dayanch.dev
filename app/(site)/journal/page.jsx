@@ -1,12 +1,12 @@
+import { createMetadata } from '@/lib/metadata'
 import BlogClient from '../blog/BlogClient'
 import { getAllPosts } from '@/lib/blog'
 
-export const metadata = {
+export const metadata = createMetadata({
   title: 'Journal | dayanch.dev',
   description: 'Software notes, personal stories, and lessons from building things.',
-  alternates: { canonical: '/journal' },
-  openGraph: { url: '/journal', title: 'Journal | dayanch.dev' },
-}
+  url: '/journal',
+})
 
 export default function JournalPage() {
   return <BlogClient allPosts={getAllPosts()} postBasePath="/journal" />

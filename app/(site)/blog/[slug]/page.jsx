@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
         {
           url: image,
           width: 1200,
-          height: 675,
+          height: post.image ? 675 : 630,
           alt: post.imageAlt || post.title,
         },
       ],
