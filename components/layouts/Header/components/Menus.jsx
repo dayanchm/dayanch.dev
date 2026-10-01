@@ -7,7 +7,8 @@ import { FiArrowUpRight, FiGithub, FiMenu, FiX } from 'react-icons/fi'
 
 const menuItems = [
   { label: 'Home', href: '/', note: 'Start here' },
-  { label: 'Journal', href: '/blog', note: 'Writing & notes' },
+  { label: 'Journal', href: '/journal', note: 'Writing & notes' },
+  { label: 'Books & Life', href: '/books-and-life', note: 'Reading & stories' },
 ]
 
 export default function Menus() {
@@ -40,10 +41,10 @@ export default function Menus() {
         dayanch<span className="text-[var(--accent)]">.</span>dev
       </Link>
 
-      <ul className="hidden items-center gap-8 sm:flex">
+      <ul className="hidden items-center gap-4 sm:flex lg:gap-8">
         {menuItems.map(item => (
           <li key={item.href}>
-            <Link href={item.href} className={`text-sm transition-colors hover:text-[var(--foreground)] ${pathname === item.href ? 'text-[var(--foreground)]' : 'text-[var(--foreground-muted)]'}`}>
+            <Link href={item.href} className={`text-sm transition-colors hover:text-[var(--foreground)] ${(pathname === item.href || (item.href !== '/' && pathname.startsWith(`${item.href}/`))) ? 'text-[var(--foreground)]' : 'text-[var(--foreground-muted)]'}`}>
               {item.label}
             </Link>
           </li>
@@ -82,7 +83,7 @@ export default function Menus() {
                   <span className="text-3xl font-semibold tracking-[-0.04em]">{item.label}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-xs text-[var(--foreground-muted)]">{item.note}</span>
+                  <span className="hidden text-xs text-[var(--foreground-muted)] min-[400px]:inline">{item.note}</span>
                   <FiArrowUpRight className="text-lg text-[var(--accent)]" />
                 </div>
               </Link>

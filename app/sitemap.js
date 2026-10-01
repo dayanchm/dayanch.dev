@@ -1,4 +1,6 @@
 import { getAllPosts } from '@/lib/blog'
+import { getAllBooks } from '@/lib/books'
+import { getAllLifePosts } from '@/lib/life'
 
 export default async function sitemap() {
   const allPosts = getAllPosts()
@@ -33,5 +35,29 @@ export default async function sitemap() {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...blogRoutes]
+  const journalRoutes = blogRoutes.map(route => ({
+    ...route,
+    url: route.url.replace('/blog/', '/journal/'),
+  }))
+
+  return [...staticRoutes, {
+    url: `${baseUrl}/journal`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.6,
+  }, {
+    url: `${baseUrl}/books-and-life`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }, ...getAllBooks().map(book => ({
+    url: `${baseUrl}/books-and-life/${book.slug}`,
+    changeFrequency: 'monthly',
+    priority: 0.5,
+  })), ...getAllLifePosts().map(post => ({
+    url: `${baseUrl}/books-and-life/life/${post.slug}`,
+    lastModified: new Date(post.createdAt),
+    changeFrequency: 'monthly',
+    priority: 0.5,
+  })), ...blogRoutes, ...journalRoutes]
 }

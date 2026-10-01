@@ -153,7 +153,7 @@ const markdownComponents = {
   ),
 }
 
-export default function ClientPost({ post }) {
+export default function ClientPost({ post, backHref = '/blog', backLabel = 'Back to blog' }) {
   const pathname = usePathname()
   const fullUrl = `https://dayanch.dev${pathname}`
   const readingTime = getReadingTime(post.text)
@@ -162,11 +162,11 @@ export default function ClientPost({ post }) {
     <main className="px-4 py-8 sm:py-12 lg:py-16">
       <article className="mx-auto max-w-6xl">
         <Link
-          href="/blog"
+          href={backHref}
           className="inline-flex items-center gap-2 text-sm text-[var(--foreground-muted)] transition-colors hover:text-[var(--accent)]"
         >
           <span aria-hidden="true">←</span>
-          Back to blog
+          {backLabel}
         </Link>
 
         <header className="mt-8 max-w-4xl">

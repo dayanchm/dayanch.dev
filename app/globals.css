@@ -82,7 +82,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light):not(.dark) {
     color-scheme: dark;
     --bg-primary: #101110;
     --bg-surface: #171816;

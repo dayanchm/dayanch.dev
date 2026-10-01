@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { FiArrowUpRight, FiBookOpen, FiSearch, FiX } from 'react-icons/fi'
+import { FiArrowUpRight, FiBookOpen, FiChevronDown, FiX } from 'react-icons/fi'
 
 const dateFormatter = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' })
 
@@ -22,13 +22,6 @@ function categoryLabel(category = 'notes') {
   if (category === 'daily') return 'Life'
   if (!category) return 'Notes'
   return category.replace(/[-_]/g, ' ').trim().replace(/\b\w/g, char => char.toUpperCase())
-}
-
-function categoryGroup(category) {
-  if (category === 'daily') return 'life'
-  if (category === 'open-source') return 'open-source'
-  if (!category) return 'notes'
-  return 'software'
 }
 
 function excerpt(post, length = 180) {
@@ -57,37 +50,19 @@ const previewMarkdownComponents = {
   code: ({ children }) => <code className="rounded border border-[var(--border)] bg-[var(--bg-surface)] px-1.5 py-0.5 font-mono text-[0.9em] text-[var(--accent-hover)]">{children}</code>,
 }
 
-export default function BlogClient({ allPosts }) {
-  const [selectedFilter, setSelectedFilter] = useState('latest')
-  const [query, setQuery] = useState('')
+export default function BlogClient({ allPosts, postBasePath = '/blog' }) {
+  const [selectedYear, setSelectedYear] = useState(() => new Date().getFullYear().toString())
   const [selectedPost, setSelectedPost] = useState(null)
 
   const posts = useMemo(() => [...allPosts].sort((a, b) => timestamp(b) - timestamp(a)), [allPosts])
-  const years = useMemo(() => [...new Set(posts.map(post => {
+  const years = useMemo(() => [...new Set([new Date().getFullYear().toString(), ...posts.map(post => {
     const value = timestamp(post)
     return value ? new Date(value).getFullYear().toString() : null
-  }).filter(Boolean))], [posts])
-  const categories = useMemo(() => ([
-    { value: 'software', label: 'Software' },
-    { value: 'life', label: 'Life' },
-    { value: 'open-source', label: 'Open Source' },
-    { value: 'notes', label: 'Notes' },
-  ].filter(category => posts.some(post => categoryGroup(post.category) === category.value))), [posts])
-  const filters = useMemo(() => [
-    { value: 'latest', label: 'Latest', type: 'latest' },
-    ...years.map(year => ({ value: `year:${year}`, label: year, type: 'year', year })),
-    ...categories.map(category => ({ ...category, type: 'category' })),
-  ], [categories, years])
-  const matchingPosts = posts.filter(post => {
+  }).filter(Boolean)])].sort((a, b) => Number(b) - Number(a)), [posts])
+  const filteredPosts = posts.filter(post => {
     const postYear = timestamp(post) ? new Date(timestamp(post)).getFullYear().toString() : ''
-    const matchesFilter = selectedFilter === 'latest'
-      || (selectedFilter.startsWith('year:') && selectedFilter === `year:${postYear}`)
-      || categoryGroup(post.category) === selectedFilter
-    const term = query.trim().toLowerCase()
-    const matchesQuery = !term || `${post.title} ${post.description} ${post.category}`.toLowerCase().includes(term)
-    return matchesFilter && matchesQuery
+    return selectedYear === 'all' || selectedYear === postYear
   })
-  const filteredPosts = selectedFilter === 'latest' && !query.trim() ? matchingPosts.slice(0, 8) : matchingPosts
   const postsByYear = Object.entries(filteredPosts.reduce((groups, post) => {
     const year = timestamp(post) ? new Date(timestamp(post)).getFullYear().toString() : 'Undated'
     groups[year] = [...(groups[year] || []), post]
@@ -116,36 +91,36 @@ export default function BlogClient({ allPosts }) {
     <main className="overflow-hidden px-4 pb-16 sm:px-6">
       <div className="home-grid pointer-events-none fixed inset-0" aria-hidden="true" />
       <div className="relative mx-auto max-w-5xl">
-        <header className="grid gap-6 border-b border-[var(--border)] py-10 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-end lg:py-14">
+        <header className="grid gap-6 py-10 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-end lg:py-14">
           <div>
             <div className="mb-4 flex items-center gap-3"><span className="section-label">The journal</span><span className="h-px w-10 bg-[var(--accent)]" /></div>
             <h1 className="max-w-3xl text-[clamp(2.25rem,5vw,4.25rem)] font-semibold leading-[.95] tracking-[-0.055em]">Ideas in <span className="text-[var(--foreground-muted)]">progress.</span></h1>
           </div>
           <div className="lg:border-l lg:border-[var(--border)] lg:pl-6">
-            <p className="text-sm leading-6 text-[var(--foreground-muted)]">Notes about software, life, open source, and the small things worth keeping.</p>
-            <div className="mt-4 flex gap-6 text-[11px] uppercase tracking-[.13em] text-[var(--foreground-muted)]"><span><strong className="mr-1.5 text-sm text-[var(--foreground)]">{posts.length}</strong>articles</span><span><strong className="mr-1.5 text-sm text-[var(--foreground)]">{categories.length}</strong>sections</span></div>
+            <label className="inline-flex items-center gap-3 text-xs text-[var(--foreground-muted)]">
+              Year
+              <span className="relative">
+                <select aria-label="Filter posts by year" value={selectedYear} onChange={event => setSelectedYear(event.target.value)} className="appearance-none rounded-full border border-[var(--border)] bg-[var(--background)] py-2 pl-3.5 pr-9 text-xs text-[var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)]">
+                  <option value="all">All years</option>
+                  {years.map(year => <option key={year} value={year}>{year}</option>)}
+                </select>
+                <FiChevronDown aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" />
+              </span>
+            </label>
           </div>
         </header>
 
         <section>
-          <div className="flex flex-col gap-4 border-b border-[var(--border)] py-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex gap-2 overflow-x-auto pb-1 lg:pb-0">
-              {filters.map(filter => <button key={filter.value} onClick={() => setSelectedFilter(filter.value)} className={`shrink-0 rounded-full px-3 py-1.5 text-[11px] transition-colors ${selectedFilter === filter.value ? 'bg-[var(--foreground)] text-[var(--background)]' : 'border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[var(--foreground)]'}`}>{filter.label}</button>)}
-            </div>
-            <label className="flex min-w-0 items-center gap-2 rounded-full border border-[var(--border)] px-3.5 py-2 lg:w-56"><FiSearch className="shrink-0 text-[var(--foreground-muted)]" /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search the journal" className="min-w-0 flex-1 bg-transparent text-xs outline-none placeholder:text-[var(--foreground-muted)]" /></label>
-          </div>
-
           <div className="py-9">
-            <div className="mb-5 flex items-end justify-between"><div><p className="section-label">Archive</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.035em]">Selected notes.</h2></div><p className="text-xs text-[var(--foreground-muted)]">{filteredPosts.length} results</p></div>
             {filteredPosts.length ? <div className="space-y-10">{postsByYear.map(([year, yearPosts]) => (
-              <section key={year} className="grid gap-5 lg:grid-cols-[120px_1fr]">
+              <section key={year} className="grid gap-5 border-t border-[var(--border)] lg:grid-cols-[120px_1fr]">
                 <div className="lg:sticky lg:top-28 lg:self-start">
-                  <div className="flex items-baseline justify-between border-t border-[var(--foreground)] pt-3 lg:block">
+                  <div className="flex items-baseline justify-between pt-3 lg:block">
                     <h3 className="text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">{year}</h3>
                     <p className="mt-2 text-xs uppercase tracking-[.13em] text-[var(--foreground-muted)]">{yearPosts.length} {yearPosts.length === 1 ? 'article' : 'articles'}</p>
                   </div>
                 </div>
-                <div className="border-t border-[var(--border)]">{yearPosts.map((post, index) => (
+                <div>{yearPosts.map((post, index) => (
                   <button key={post.slug} type="button" onClick={() => setSelectedPost(post)} className="archive-row group grid w-full gap-3 border-b border-[var(--border)] py-4 text-left transition-colors hover:bg-[var(--bg-surface)] sm:grid-cols-[36px_1fr_auto] sm:items-center sm:px-3">
                     <span className="hidden font-mono text-[10px] text-[var(--foreground-muted)] sm:block">{String(index + 1).padStart(2, '0')}</span>
                     <div><div className="mb-1.5 flex items-center gap-2 text-[10px] uppercase tracking-[.13em] text-[var(--foreground-muted)]"><span className="text-[var(--accent)]">{categoryLabel(post.category)}</span><span>{formatDate(post)}</span></div><h4 className="text-base font-semibold leading-tight tracking-[-0.015em] transition-colors group-hover:text-[var(--accent)] sm:text-lg">{post.title}</h4><p className="mt-2 max-w-3xl text-xs leading-5 text-[var(--foreground-muted)] sm:hidden">{excerpt(post, 100)}</p></div>
@@ -153,7 +128,7 @@ export default function BlogClient({ allPosts }) {
                   </button>
                 ))}</div>
               </section>
-            ))}</div> : <div className="rounded-xl border border-dashed border-[var(--border)] py-14 text-center"><p className="text-lg font-medium">Nothing found.</p><button onClick={() => { setQuery(''); setSelectedFilter('latest') }} className="mt-3 text-sm text-[var(--accent)]">Clear filters</button></div>}
+            ))}</div> : <div className="rounded-xl border border-dashed border-[var(--border)] py-14 text-center"><p className="text-lg font-medium">Nothing found.</p><button onClick={() => setSelectedYear('all')} className="mt-3 text-sm text-[var(--accent)]">All years</button></div>}
           </div>
         </section>
       </div>
@@ -191,7 +166,7 @@ export default function BlogClient({ allPosts }) {
                 <button type="button" onClick={() => setSelectedPost(null)} className="rounded-full border border-[var(--border)] px-4 py-2 text-sm text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]">
                   Close
                 </button>
-                <Link href={`/blog/${selectedPost.slug}`} className="inline-flex items-center gap-2 rounded-full bg-[var(--foreground)] px-4 py-2 text-sm font-medium text-[var(--background)]">
+                <Link href={`${postBasePath}/${selectedPost.slug}`} className="inline-flex items-center gap-2 rounded-full bg-[var(--foreground)] px-4 py-2 text-sm font-medium text-[var(--background)]">
                   Open full page
                   <FiArrowUpRight />
                 </Link>
