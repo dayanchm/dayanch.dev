@@ -1,6 +1,6 @@
 ---
 title: "Conditional Statements"
-author: "dayanch"
+
 createdAt: "2025-01-20T17:00:00.000Z"
 description: "Learn how to use conditional statements in Go, including if, else if, and switch."
 category: "golang"

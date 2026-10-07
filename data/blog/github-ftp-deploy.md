@@ -1,6 +1,6 @@
 ---
 title: "Automated FTP Deployment with GitHub Actions"
-author: "dayanch"
+
 createdAt: "2024-04-05T15:00:00.000Z"
 description: "Learn how to automatically deploy your website to an FTP server using GitHub Actions and SamKirkland's FTP Deploy Action."
 category: "devops"

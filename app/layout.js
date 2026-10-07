@@ -23,7 +23,7 @@ export const metadata = {
     apple: "/icon.svg",
   },
   ...createMetadata({
-    title: 'Dayanch | Software Developer',
+    title: 'Dayanch Muhammetgeldiyev',
     description: 'I build software, explore ideas, and contribute to open source. Discover my projects, development notes, and reading shelf.',
     url: '/',
   }),

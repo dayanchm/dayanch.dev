@@ -37,8 +37,8 @@ export default function Menus() {
 
   return (
     <nav className="flex w-full items-center justify-between" aria-label="Main navigation">
-      <Link href="/" className="relative z-50 text-base font-semibold tracking-[-0.03em]">
-        dayanch<span className="text-[var(--accent)]">.</span>dev
+      <Link href="/" className="relative z-50 text-xl font-semibold tracking-[-0.03em]">
+        Dayanch 
       </Link>
 
       <ul className="hidden items-center gap-4 sm:flex lg:gap-8">

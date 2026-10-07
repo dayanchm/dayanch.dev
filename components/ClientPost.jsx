@@ -160,7 +160,7 @@ export default function ClientPost({ post, backHref = '/blog', backLabel = 'Back
 
   return (
     <main className="px-4 py-8 sm:py-12 lg:py-16">
-      <article className="mx-auto max-w-6xl">
+      <article className="mx-auto max-w-7xl">
         <Link
           href={backHref}
           className="inline-flex items-center gap-2 text-sm text-[var(--foreground-muted)] transition-colors hover:text-[var(--accent)]"
@@ -188,8 +188,6 @@ export default function ClientPost({ post, backHref = '/blog', backLabel = 'Back
           )}
 
           <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[var(--foreground-muted)]">
-            <span className="font-medium text-[var(--foreground)]">{post.author || 'dayanch'}</span>
-            <span aria-hidden="true" className="text-[var(--border)]">•</span>
             <time dateTime={post.createdAt}>{dateFormatter.format(new Date(post.createdAt))}</time>
           </div>
         </header>
@@ -214,15 +212,15 @@ export default function ClientPost({ post, backHref = '/blog', backLabel = 'Back
           </figure>
         )}
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,46rem)_15rem] lg:gap-16">
+        <div className="mt-12 grid gap-10">
           <div className="min-w-0 border-t border-[var(--border)] pt-3">
             <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
               {post.text}
             </ReactMarkdown>
           </div>
 
-          <aside className="lg:order-last">
-            <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] p-5 lg:sticky lg:top-28">
+          <aside>
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] p-5">
               <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
                 Article
               </p>

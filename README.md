@@ -35,7 +35,6 @@ Blog posts live in `data/blog` as Markdown files with frontmatter:
 ```md
 ---
 title: "Post title"
-author: "dayanch"
 createdAt: "2026-01-01T00:00:00.000Z"
 description: "Short summary"
 category: "notes"
@@ -91,3 +90,11 @@ sayfasındaki Life Notes bölümünde listelenir. Örnek: `data/life/ornek-life-
 frontmatter alanlarını kullanabilirsin. `section` eklemene gerek yok.
 Fotoğraflar için `public/images/life/` klasörünü kullan.
 Yazı adresi: `/books-and-life/life/dosya-adi`.
+
+### Kitaplığı yıllara göre filtreleme
+
+“My bookshelf” yanındaki “Year” seçimi kitapları aynı rafta yıla göre filtreler.
+Varsayılan “All years” tüm kitapları gösterir. Yıllar en yeniden eskiye sıralanır.
+Kitabın yılı için `finishedAt: "2025-09"` veya yalnızca yılı biliyorsan
+`readYear: "2025"` ekle. `finishedAt` varsa önceliklidir. Tarihsiz kitaplar
+“All years” ve “Undated” seçimlerinde görünür.

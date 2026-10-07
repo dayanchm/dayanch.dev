@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
       title: post.title,
       description: post.description,
       url,
-      siteName: 'dayanch.dev',
+      siteName: 'Dayanch Muhammetgeldiyev',
       type: 'article',
       publishedTime: post.publishedAt || post.createdAt,
       modifiedTime: post.updatedAt,

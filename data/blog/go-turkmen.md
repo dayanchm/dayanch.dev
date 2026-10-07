@@ -1,6 +1,6 @@
 ---
 title: "Go-turkmen: Learn Golang in Turkmen Language"
-author: "dayanch"
+
 createdAt: "2024-09-18T19:00:00.000Z"
 description: "Go-turkmen is a project that introduces the Go programming language to Turkmen speakers through localized tutorials and examples."
 category: "golang"

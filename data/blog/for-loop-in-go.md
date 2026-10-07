@@ -1,6 +1,6 @@
 ---
 title: "For Loop in Go"
-author: "dayanch"
+
 createdAt: "2025-01-18T17:00:00.000Z"
 description: "Learn how to use the for loop in Go, including its syntax and examples."
 category: "golang"

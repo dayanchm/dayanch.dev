@@ -87,7 +87,7 @@ export default async function HomePage() {
   return (
     <main className="home-shell overflow-hidden px-4 pb-8 sm:px-6">
       <div className="home-grid pointer-events-none fixed inset-0" aria-hidden="true" />
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto max-w-7xl">
         <section className="grid items-center gap-8 py-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10 lg:py-14">
           <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
             <div className="mx-auto mb-7 max-w-md text-left lg:mx-0">

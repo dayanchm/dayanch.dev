@@ -1,6 +1,6 @@
 ---
 title: "Why I Created the tm-data Repository"
-author: "dayanch"
+
 createdAt: "2026-08-24T00:00:00.000Z"
 description: "tm-data is an open-source project created to collect, preserve, and share data about Turkmenistan, the Turkmen language, and Turkmen culture."
 category: "open-source"

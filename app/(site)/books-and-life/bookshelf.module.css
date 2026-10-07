@@ -1,0 +1,88 @@
+.yearFilter { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--foreground-muted); }
+.yearFilter select { padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--foreground); font: inherit; cursor: pointer; }
+.yearFilter select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.shelf {
+  --wood-top: #d6b591;
+  --wood-edge: #bc946b;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-top: 34px;
+  background: radial-gradient(ellipse at 50% 20%, color-mix(in srgb, var(--foreground-muted) 7%, transparent), transparent 70%);
+}
+
+.book { min-width: 0; position: relative; }
+.coverLink {
+  position: relative;
+  display: flex;
+  height: 252px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 24px 0;
+  perspective: 900px;
+  z-index: 1;
+}
+.coverLink::before {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  height: 13px;
+  background: linear-gradient(180deg, var(--wood-top) 0 35%, var(--wood-edge) 36% 100%);
+  border-bottom: 1px solid #997653;
+  box-shadow: 0 9px 12px -5px #39230f40, inset 0 1px #ffffff70;
+  z-index: -1;
+}
+.cover {
+  position: relative;
+  width: 100%;
+  max-width: 170px;
+  transform: rotateY(-9deg);
+  transform-origin: left bottom;
+  transition: transform .25s ease, filter .25s ease;
+  filter: drop-shadow(7px 5px 4px #00000030);
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2px 4px 4px 2px;
+  background: linear-gradient(90deg, #00000030, #ffffff18 3%, #00000015 5%, transparent 9%, transparent 96%, #00000018);
+  box-shadow: inset -2px 0 #ffffff30;
+  pointer-events: none;
+}
+.coverImage { display: block; width: 100%; height: auto; max-height: 242px; object-fit: contain; object-position: bottom; border-radius: 2px 4px 4px 2px; }
+.coverLink:hover .cover, .coverLink:focus-visible .cover { transform: translateY(-10px) rotateY(0) rotate(-2deg); filter: drop-shadow(10px 12px 7px #00000025); }
+.coverHint { position: absolute; bottom: 14px; display: flex; align-items: center; gap: 8px; background: var(--foreground); color: var(--background); padding: 8px 12px; border-radius: 20px; font-size: 11px; opacity: 0; transform: translateY(4px); transition: opacity .2s, transform .2s; }
+.coverLink:hover .coverHint, .coverLink:focus-visible .coverHint { opacity: 1; transform: translateY(0); }
+.coverLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 4px; }
+.bookInfo { padding: 32px 22px 38px; }
+.bookMeta { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.bookNumber { font: 10px ui-monospace, monospace; color: var(--foreground-muted); opacity: .65; }
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 9px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--foreground-muted); }
+.status::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.status[data-reading='true'] { color: var(--accent); }
+.bookTitle { font-size: 15px; font-weight: 600; line-height: 1.5; letter-spacing: -.025em; }
+.bookTitle a:hover { color: var(--accent); }
+.author, .finished { margin-top: 6px; font-size: 12px; line-height: 1.6; color: var(--foreground-muted); }
+.finished { font-size: 11px; }
+.description { margin-top: 12px; font-size: 12px; line-height: 1.7; color: var(--foreground-muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.fallbackCover { min-height: 220px; padding: 22px 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; color: #f5ecd9; background: #37534b; border-radius: 2px 4px 4px 2px; font-family: Georgia, serif; font-size: 20px; }
+.fallbackCover small { font-size: 11px; }
+:global(.dark) .shelf { --wood-top: #74604b; --wood-edge: #514131; }
+@media (prefers-color-scheme: dark) {
+  :global(:root:not(.light):not(.dark)) .shelf { --wood-top: #74604b; --wood-edge: #514131; }
+}
+@media (max-width: 640px) {
+  .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 12px; }
+  .coverLink { height: 226px; padding-inline: 20px; }
+  .coverImage { max-height: 216px; }
+  .bookInfo { padding-inline: 16px; }
+  .bookTitle { font-size: 14px; }
+  .fallbackCover { min-height: 180px; font-size: 17px; padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover, .coverHint { transition: none; }
+  .coverLink:hover .cover, .coverLink:focus-visible .cover { transform: none; }
+}

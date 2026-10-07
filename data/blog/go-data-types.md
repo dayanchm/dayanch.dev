@@ -1,6 +1,6 @@
 ---
 title: "Go Data Types"
-author: "dayanch"
+
 createdAt: "2025-01-12T17:00:00.000Z"
 description: "Explore the various data types in Go, including basic types, composite types, and more."
 category: "golang"

@@ -1,6 +1,6 @@
 ---
 title: "Dockerizing a Node.js App"
-author: "dayanch"
+
 createdAt: "2024-06-25T17:00:00.000Z"
 description: "Learn how to build and run a Node.js app in Docker with minimal setup."
 category: "devops"

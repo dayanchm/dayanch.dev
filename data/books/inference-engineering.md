@@ -2,6 +2,7 @@
 title: "Inference Engineering"
 author: "Philip Kiely"
 status: "finished"
+readYear: "2026"
 cover: "/images/books/inference-engineering.png"
 description: ""
 ---

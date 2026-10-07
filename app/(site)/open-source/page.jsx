@@ -3,7 +3,7 @@ import { FiArrowUpRight, FiGitPullRequest, FiGithub } from 'react-icons/fi'
 import { getOpenSourceContributions } from '@/lib/github'
 
 export const metadata = createMetadata({
-  title: 'Open Source Contributions | dayanch.dev',
+  title: 'Open Source Contributions',
   description: 'Problems solved and pull requests contributed by Dayanch to open-source projects.',
   url: '/open-source',
 })
@@ -30,7 +30,7 @@ export default async function OpenSourcePage() {
     <main className="home-shell overflow-hidden px-4 pb-20 sm:px-6">
       <div className="home-grid pointer-events-none fixed inset-0" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto max-w-7xl">
         <header className="grid gap-9 border-b border-[var(--border)] py-12 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-end lg:py-16">
           <div>
             <div className="mb-5 flex items-center gap-3">

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const post = getLifePostBySlug(slug)
   if (!post) notFound()
   return {
-    title: `${post.title} | Life Notes | dayanch.dev`,
+    title: `${post.title} | Life Notes`,
     description: post.description,
     alternates: { canonical: `/books-and-life/life/${slug}` },
   }

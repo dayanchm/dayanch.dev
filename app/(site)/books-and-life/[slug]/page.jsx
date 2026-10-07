@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
   const book = getBookBySlug(slug)
   if (!book) notFound()
   return createMetadata({
-    title: `${book.title} | Books & Life | dayanch.dev`,
+    title: `${book.title} | Books & Life`,
     description: book.description,
     url: `/books-and-life/${slug}`,
     type: 'article',

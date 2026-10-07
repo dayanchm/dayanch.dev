@@ -1,6 +1,6 @@
 ---
 title: "GitHub Actions Explained: A Complete CI/CD Guide for Next.js"
-author: "dayanch"
+
 createdAt: "2026-08-17T12:00:00.000Z"
 description: "Learn how GitHub Actions works and build a practical Next.js CI/CD pipeline with caching, secrets, matrices, artifacts, security controls, and deployment gates."
 category: "devops"

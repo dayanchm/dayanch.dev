@@ -1,6 +1,6 @@
 ---
 title: "Understanding Slices in Go"
-author: "dayanch"
+
 createdAt: "2024-08-05T18:00:00.000Z"
 description: "Slices in Go are a powerful abstraction over arrays. In this post, we explore how slices work, their syntax, and key behaviors."
 category: "golang"

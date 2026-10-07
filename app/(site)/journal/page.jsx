@@ -3,7 +3,7 @@ import BlogClient from '../blog/BlogClient'
 import { getAllPosts } from '@/lib/blog'
 
 export const metadata = createMetadata({
-  title: 'Journal | dayanch.dev',
+  title: 'Journal',
   description: 'Software notes, personal stories, and lessons from building things.',
   url: '/journal',
 })

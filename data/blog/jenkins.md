@@ -4,7 +4,7 @@ description: "Jenkins is an open-source automation server that is widely used fo
 createdAt: "2023-09-18T08:17:55.423Z"
 updatedAt: "2023-09-19T17:54:06.676Z"
 publishedAt: "2023-09-18T12:37:17.190Z"
-author: "dayanch"
+
 ---
 
 Jenkins is an open-source automation server that is widely used for continuous integration (CI) and continuous delivery (CD) in software development. It is a powerful tool that helps software development teams automate various aspects of the software development lifecycle, including building, testing, and deploying applications. Jenkins is written in Java and provides a flexible and extensible platform for automating a wide range of tasks.

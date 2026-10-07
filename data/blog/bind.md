@@ -1,6 +1,6 @@
 ---
 title: "bind"
-author: "dayanch"
+
 createdAt: "2026-07-17T00:00:00.000Z"
 description: "Learn Laravel's bind method through a practical PaymentMethod example."
 category: "laravel"

@@ -1,6 +1,6 @@
 ---
 title: "Laravel Clean Architecture (Real Project Structure)"
-author: "dayanch"
+
 createdAt: "2026-05-07T16:29:00.000Z"
 description: "A practical guide to applying Clean Architecture in Laravel with a real-world project structure teams can scale and maintain."
 category: "laravel"

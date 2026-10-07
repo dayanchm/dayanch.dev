@@ -1,6 +1,6 @@
 ---
 title: "Events"
-author: "dayanch"
+
 createdAt: "2026-07-17T00:00:00.000Z"
 description: "Understand Laravel events and listeners step by step through a practical payment completion example, with links to the official sources."
 category: "laravel"

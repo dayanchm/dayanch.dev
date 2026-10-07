@@ -1,6 +1,6 @@
 ---
 title: "Docker Compose Explained: From One Container to a Complete Development Stack"
-author: "dayanch"
+
 createdAt: "2026-08-17T14:00:00.000Z"
 description: "Learn Docker Compose from first principles by running a multi-container application with services, networks, volumes, health checks, environment variables, profiles, and production-ready practices."
 category: "devops"

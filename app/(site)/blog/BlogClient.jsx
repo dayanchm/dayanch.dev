@@ -90,7 +90,7 @@ export default function BlogClient({ allPosts, postBasePath = '/blog' }) {
   return (
     <main className="overflow-hidden px-4 pb-16 sm:px-6">
       <div className="home-grid pointer-events-none fixed inset-0" aria-hidden="true" />
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto max-w-7xl">
         <header className="grid gap-6 py-10 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-end lg:py-14">
           <div>
             <div className="mb-4 flex items-center gap-3"><span className="section-label">The journal</span><span className="h-px w-10 bg-[var(--accent)]" /></div>

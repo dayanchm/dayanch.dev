@@ -1,6 +1,5 @@
 ---
 title: "AppServiceProvider"
-author: "dayanch"
 createdAt: "2026-07-17T00:00:00.000Z"
 description: "Learn what Laravel's AppServiceProvider does and how to use its register and boot methods through a practical payment example."
 category: "laravel"

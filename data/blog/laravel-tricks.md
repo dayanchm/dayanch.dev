@@ -1,6 +1,6 @@
 ---
 title: "Laravel Tricks"
-author: "dayanch"
+
 createdAt: "2026-01-02T16:20:00.000Z"
 description: "A practical guide to professional Laravel habits for clean architecture, better performance, and scalable code."
 category: "laravel"

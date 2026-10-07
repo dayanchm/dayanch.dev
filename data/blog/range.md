@@ -1,6 +1,6 @@
 ---
 title: "Range"
-author: "dayanch"
+
 createdAt: "2025-01-19T17:00:00.000Z"
 description: "Learn how to use the `range` keyword in Go to iterate over arrays, slices, maps, and channels."
 category: "golang"

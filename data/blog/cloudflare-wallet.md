@@ -1,6 +1,6 @@
 ---
 title: "Cloudflare Wallet: A First Look at cloudflare.pay"
-author: "dayanch"
+
 createdAt: "2026-08-05T00:00:00.000Z"
 updatedAt: "2026-08-05T00:00:00.000Z"
 publishedAt: "2026-08-05T00:00:00.000Z"

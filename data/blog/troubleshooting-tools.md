@@ -1,6 +1,6 @@
 ---
 title: "The Network Troubleshooting Field Guide: From Ping to Packet Capture"
-author: "dayanch"
+
 createdAt: "2026-07-27T00:00:00.000Z"
 description: "A practical, layered guide to diagnosing connectivity, DNS, routing, ports, HTTP, TLS, bandwidth, Linux services, VPNs, and packets with the essential command-line tools."
 category: "networking"
