@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { FiArrowUpRight, FiGithub, FiMail, FiTerminal } from 'react-icons/fi'
+import { FiGithub, FiMail, FiTerminal } from 'react-icons/fi'
 import ProjectTimeline from '@/components/Home/ProjectTimeline'
 import { getAllPosts } from '@/lib/blog'
 import { getOpenSourceContributions } from '@/lib/github'
@@ -90,53 +90,6 @@ export default async function HomePage() {
       <div className="relative mx-auto max-w-7xl">
         <section className="grid items-center gap-8 py-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10 lg:py-14">
           <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
-            <div className="mx-auto mb-7 max-w-md text-left lg:mx-0">
-              <a
-                href="https://www.ois-solutions.ch/"
-                target="_blank"
-                rel="noreferrer"
-                className="group mx-auto inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/25 bg-[var(--accent)]/10 px-3.5 py-2 text-xs font-medium text-[var(--foreground)] shadow-sm transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] sm:hidden"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-                <span className="text-[var(--accent)]">Workplace</span>
-                <span className="h-3 w-px bg-[var(--border)]" />
-                OIS Solutions
-                <FiArrowUpRight className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-              <div className="hidden grid-cols-[112px_minmax(0,1fr)] items-end gap-3 sm:grid">
-              <div className="relative hidden h-16 opacity-60 sm:block" aria-hidden="true">
-                <span className="absolute left-0 top-5 rotate-[-9deg] font-serif text-base italic text-[var(--accent)] sm:text-lg">
-                  workplace
-                </span>
-                <svg className="absolute left-9 top-8 h-8 w-16 text-[var(--accent)] sm:left-14 sm:w-18" viewBox="0 0 86 44" fill="none">
-                  <path
-                    d="M4 8C18 31 46 37 73 24"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeDasharray="3 5"
-                  />
-                  <path
-                    d="M66 17L76 23.5L68 32"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <a
-                href="https://www.ois-solutions.ch/"
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex w-fit items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--bg-surface)] px-3.5 py-2 text-xs font-medium text-[var(--foreground)] shadow-sm transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] sm:text-sm"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-                OIS Solutions
-                <FiArrowUpRight className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-              </div>
-            </div>
             <h1 className="mx-auto max-w-2xl text-[clamp(2.05rem,4.25vw,3.65rem)] font-medium leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] lg:mx-0">
               I build software<span className="block text-[var(--foreground-muted)]">and share the process.</span>
             </h1>
